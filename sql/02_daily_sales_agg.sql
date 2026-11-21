@@ -9,7 +9,7 @@ SELECT
   SUM(o.amount)                         AS gross_revenue,
   SAFE_DIVIDE(SUM(o.amount), COUNT(DISTINCT o.order_id)) AS avg_order_value
 FROM `gcai-may-26.sales.raw_orders` o
-JOIN `gcai-may-26.sales.customer_lookup` c
+LEFT JOIN `gcai-may-26.sales.customer_lookup` c
   ON o.customer_id = c.customer_id
 WHERE o.status = 'COMPLETED'
 GROUP BY sales_date, o.store_id;

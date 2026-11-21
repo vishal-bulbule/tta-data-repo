@@ -79,5 +79,4 @@ with DAG(
         },
     )
 
-    load_raw_orders >> build_daily_agg >> dq_checks
-    refresh_lookup
+    load_raw_orders >> refresh_lookup >> build_daily_agg >> dq_checks
